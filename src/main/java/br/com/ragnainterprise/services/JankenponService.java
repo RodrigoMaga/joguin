@@ -6,10 +6,6 @@ import java.util.Scanner;
 
 public class JankenponService {
 
-
-
-
-
     public void gamePlay() {
 
         Player player1 = new Player();
@@ -33,6 +29,14 @@ public class JankenponService {
         player2.name = name;
         player2.hand = hand;
 
+        if (player1.hand < 1 || player1.hand > 3){
+            System.out.println("Escolha uma opção válida!");
+        }
+
+        if (player2.hand < 1 || player2.hand > 3){
+            System.out.println("Escolha uma opção válida!");
+        }
+
         if (player1.hand == player2.hand) {
             System.out.println("Empate!");
             return; //todo resolver questão do empate
@@ -45,6 +49,5 @@ public class JankenponService {
             System.out.println(player1.name + " Wins!");
             return;
         }
-
     }
 }
