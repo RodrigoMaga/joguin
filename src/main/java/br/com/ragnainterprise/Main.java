@@ -1,8 +1,10 @@
 package br.com.ragnainterprise;
 
+import br.com.ragnainterprise.services.JankenponService;
+
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("Hello world!");
+        JankenponService jankenponService = new JankenponService();
+        jankenponService.gamePlay();
     }
 }
