@@ -15,7 +15,7 @@ public class JankenponService {
         System.out.print("Informe seu nome: ");
         String name = scanner.next();
 
-        System.out.print("Informe sua escolha: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura: ");
+        System.out.printf("Informe sua escolha: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura: ");
         int hand = scanner.nextInt();
 
         player1.name = name;
@@ -41,13 +41,34 @@ public class JankenponService {
             System.out.println("Empate!");
             return; //todo resolver questão do empate
         }
+
         if (player1.hand == 1 && player2.hand == 2) {
             System.out.println(player2.name + " Wins!");
             return;
         }
+
         if (player1.hand == 2 && player2.hand == 1) {
             System.out.println(player1.name + " Wins!");
             return;
+        }
+
+        if (player1.hand == 1 && player2.hand == 3) {
+            System.out.println(player1.name + " Wins!");
+            return;
+        }
+
+        if (player1.hand == 3 && player2.hand == 1) {
+            System.out.println(player2.name + " Wins!");
+            return;
+        }
+
+        if (player1.hand == 2 && player2.hand == 3) {
+            System.out.println(player2.name + " Wins!");
+            return;
+        }
+
+        if (player1.hand == 3 && player2.hand == 2) {
+            System.out.println(player1.name + " Wins!");
         }
     }
 }
