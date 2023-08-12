@@ -10,34 +10,8 @@ public class JankenponService {
 
     public void gamePlay() {
 
-        Player player1 = new Player();
-        Player player2 = new Player();
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Informe seu nome: ");
-        String name = scanner.next();
-
-        System.out.printf("Informe sua escolha: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura: ");
-        int hand = scanner.nextInt();
-
-        player1.name = name;
-        player1.hand = hand;
-
-        System.out.print("Informe seu nome: ");
-        name = scanner.next();
-        System.out.printf("Informe sua escolha: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura: ");
-        hand = scanner.nextInt();
-
-        player2.name = name;
-        player2.hand = hand;
-
-        if (player1.hand < 1 || player1.hand > 3){
-            System.out.println("Escolha uma opção válida!");
-        }
-
-        if (player2.hand < 1 || player2.hand > 3){
-            System.out.println("Escolha uma opção válida!");
-        }
+        Player player1 = askPlayerInput();
+        Player player2 = askPlayerInput();
 
         if (player1.hand == player2.hand) {
             System.out.println("Empate!");
@@ -73,4 +47,21 @@ public class JankenponService {
             System.out.println(player1.name + " Wins!");
         }
     }
+
+    private Player askPlayerInput() {
+        Player player = new Player();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Informe seu nome: ");
+        player.name = scanner.next();
+        System.out.printf("Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
+        System.out.print("Informe sua escolha: ");
+        player.hand = scanner.nextInt();
+        if (player.hand < 1 || player.hand > 3){
+            System.out.println("Escolha uma opção válida!");
+        }
+
+        return player;
+    }
+
 }
