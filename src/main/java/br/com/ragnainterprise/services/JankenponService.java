@@ -9,12 +9,23 @@ public class JankenponService {
     Player player1 = askPlayerInput()[0];
     Player player2 = askPlayerInput()[0];
     String winner;
+    String loser;
+    int winnerHand;
+    final int pedra = 1;
+    final int papel = 2;
+    final int tesoura = 3;
 
     public void gamePlay() {
 
         findWinner();
 
-        System.out.println(winner + " Wins!");
+        System.out.println(loser + " mamou o " + winner);
+
+        switch (winnerHand) {
+            case 1 -> System.out.println("Pedra vence tesoura");
+            case 2 -> System.out.println("Papel vence pedra");
+            case 3 -> System.out.println("Tesoura vence papel");
+        }
 
     }
 
@@ -51,9 +62,7 @@ public class JankenponService {
 
         player2.hand = scanner.nextInt();
 
-        if (player1.hand != player2.hand) {
-        findWinner();
-        } else {
+        while (player1.hand == player2.hand) {
             drawSolver();
         }
 
@@ -68,28 +77,41 @@ public class JankenponService {
             drawSolver();
         }
 
-        if (player1.hand == 1 && player2.hand == 2) {
+        if (player1.hand == pedra && player2.hand == papel) {
             winner = player2.name;
+            loser = player1.name;
+            winnerHand = player2.hand;
+
         }
 
-        if (player1.hand == 2 && player2.hand == 1) {
+        if (player1.hand == papel && player2.hand == pedra) {
             winner = player1.name;
+            loser = player2.name;
+            winnerHand = player1.hand;
         }
 
-        if (player1.hand == 1 && player2.hand == 3) {
+        if (player1.hand == pedra && player2.hand == tesoura) {
             winner = player1.name;
+            loser = player2.name;
+            winnerHand = player1.hand;
         }
 
-        if (player1.hand == 3 && player2.hand == 1) {
+        if (player1.hand == tesoura && player2.hand == pedra) {
             winner = player2.name;
+            loser = player1.name;
+            winnerHand = player2.hand;
         }
 
-        if (player1.hand == 2 && player2.hand == 3) {
+        if (player1.hand == papel && player2.hand == tesoura) {
             winner = player2.name;
+            loser = player1.name;
+            winnerHand = player2.hand;
         }
 
-        if (player1.hand == 3 && player2.hand == 2) {
+        if (player1.hand == tesoura && player2.hand == papel) {
             winner = player1.name;
+            loser = player2.name;
+            winnerHand = player1.hand;
         }
     }
 }
