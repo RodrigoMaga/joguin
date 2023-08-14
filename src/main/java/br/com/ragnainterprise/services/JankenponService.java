@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class JankenponService {
 
-    Player player1 = askPlayerInput()[0];
-    Player player2 = askPlayerInput()[0];
+    Player player1 = askPlayerInput();
+    Player player2 = askPlayerInput();
     String winner;
     String loser;
     int winnerHand;
@@ -22,14 +22,14 @@ public class JankenponService {
         System.out.println(loser + " mamou o " + winner);
 
         switch (winnerHand) {
-            case 1 -> System.out.println("Pedra vence tesoura");
-            case 2 -> System.out.println("Papel vence pedra");
-            case 3 -> System.out.println("Tesoura vence papel");
+            case pedra -> System.out.println("Pedra vence tesoura");
+            case papel -> System.out.println("Papel vence pedra");
+            case tesoura -> System.out.println("Tesoura vence papel");
         }
 
     }
 
-    private Player[] askPlayerInput() {
+    private Player askPlayerInput() {
         Player player = new Player();
 
         Scanner scanner = new Scanner(System.in);
@@ -47,7 +47,7 @@ public class JankenponService {
             //quando tava chamando o método ele ficava reatribuindo o player aí o nome ficava null
         }
 
-        return new Player[]{player};
+        return player;
     }
     private void drawSolver() {
         Scanner scanner = new Scanner(System.in);
@@ -69,8 +69,6 @@ public class JankenponService {
     }
 
     private void findWinner() {
-
-
 
         if (player1.hand == player2.hand) {
             System.out.println("Empate!");
