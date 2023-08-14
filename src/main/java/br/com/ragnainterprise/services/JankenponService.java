@@ -70,27 +70,22 @@ public class JankenponService {
 
         if (player1.hand == 1 && player2.hand == 2) {
             winner = player2.name;
-            return;
         }
 
         if (player1.hand == 2 && player2.hand == 1) {
             winner = player1.name;
-            return;
         }
 
         if (player1.hand == 1 && player2.hand == 3) {
             winner = player1.name;
-            return;
         }
 
         if (player1.hand == 3 && player2.hand == 1) {
             winner = player2.name;
-            return;
         }
 
         if (player1.hand == 2 && player2.hand == 3) {
             winner = player2.name;
-            return;
         }
 
         if (player1.hand == 3 && player2.hand == 2) {
