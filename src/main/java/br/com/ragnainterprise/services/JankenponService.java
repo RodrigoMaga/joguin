@@ -24,7 +24,17 @@ public class JankenponService {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Informe seu nome: ");
         player.name = scanner.next();
-        player.hand = getHand();
+
+        System.out.printf("Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
+        System.out.print("Informe sua escolha: ");
+        player.hand = scanner.nextInt();
+
+        while (player.hand < 1 || player.hand > 3){
+            System.out.print("Escolha uma opção válida: ");
+            player.hand = scanner.nextInt();
+            //gethand();
+            //quando tava chamando o método ele ficava reatribuindo o player aí o nome ficava null
+        }
 
         return new Player[]{player};
     }
@@ -86,22 +96,5 @@ public class JankenponService {
         if (player1.hand == 3 && player2.hand == 2) {
             winner = player1.name;
         }
-    }
-
-    private int getHand() {
-        Scanner scanner = new Scanner(System.in);
-        Player player = new Player();
-
-        System.out.printf("Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
-        System.out.print("Informe sua escolha: ");
-        player.hand = scanner.nextInt();
-
-        while (player.hand < 1 || player.hand > 3){
-            System.out.print("Escolha uma opção válida: ");
-            player.hand = scanner.nextInt();
-            //gethand();
-            //quando tava chamando o método ele ficava reatribuindo o player aí o nome ficava null
-        }
-        return player.hand;
     }
 }
