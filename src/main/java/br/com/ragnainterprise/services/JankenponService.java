@@ -1,5 +1,6 @@
 package br.com.ragnainterprise.services;
 
+import br.com.ragnainterprise.Main;
 import br.com.ragnainterprise.domain.Player;
 
 import java.util.Scanner;
@@ -25,6 +26,11 @@ public class JankenponService {
             case pedra -> System.out.println("Pedra vence tesoura");
             case papel -> System.out.println("Papel vence pedra");
             case tesoura -> System.out.println("Tesoura vence papel");
+
+        }
+
+        if (willContinue()) {
+            gamePlay();
         }
 
     }
@@ -111,5 +117,19 @@ public class JankenponService {
             loser = player2.name;
             winnerHand = player1.hand;
         }
+    }
+    private boolean willContinue(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Deseja jogar novamente?");
+        System.out.printf("1 - Sim %n2 - Não%n");
+        int choice = scanner.nextInt();
+
+        if (choice == 1){
+        player1 = askPlayerInput();
+        player2 = askPlayerInput();
+        } else {
+            return false;
+        }
+        return true;
     }
 }
