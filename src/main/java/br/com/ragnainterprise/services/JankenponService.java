@@ -13,9 +13,9 @@ public class JankenponService {
     String winner;
     String loser;
     int winnerHand;
-    final int pedra = 1;
-    final int papel = 2;
-    final int tesoura = 3;
+    private static final int PEDRA = 1;
+    private static final int PAPEL = 2;
+    private static final int TESOURA = 3;;
 
     public void gamePlay() {
 
@@ -24,9 +24,9 @@ public class JankenponService {
         System.out.println(loser + " mamou o " + winner);
 
         switch (winnerHand) {
-            case pedra -> System.out.println("Pedra vence tesoura");
-            case papel -> System.out.println("Papel vence pedra");
-            case tesoura -> System.out.println("Tesoura vence papel");
+            case PEDRA -> System.out.println("Pedra vence tesoura");
+            case PAPEL -> System.out.println("Papel vence pedra");
+            case TESOURA -> System.out.println("Tesoura vence papel");
 
         }
 
@@ -52,7 +52,7 @@ public class JankenponService {
 //        player.hand = scanner.nextInt();
 
 
-        while (player.hand != pedra && player.hand != papel && player.hand != tesoura){
+        while (player.hand != PEDRA && player.hand != PAPEL && player.hand != TESOURA){
             player.hand = InputUserTerminal.askInt("Escolha uma opção válida: ");
             //gethand();
             //quando tava chamando o método ele ficava reatribuindo o player aí o nome ficava null
@@ -66,14 +66,14 @@ public class JankenponService {
         System.out.printf(player1.name + " Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
         player1.hand = InputUserTerminal.askInt("Informe sua escolha: ");
 
-        while (player1.hand != pedra && player1.hand != papel && player1.hand != tesoura) {
+        while (player1.hand != PEDRA && player1.hand != PAPEL && player1.hand != TESOURA) {
             player1.hand = InputUserTerminal.askInt("Escolha uma opção válida: ");
         }
 
         System.out.printf(player2.name + " Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
         player2.hand = InputUserTerminal.askInt("Informe sua escolha: ");
 
-        while (player2.hand != pedra && player2.hand != papel && player2.hand != tesoura) {
+        while (player2.hand != PEDRA && player2.hand != PAPEL && player2.hand != TESOURA) {
             player2.hand = InputUserTerminal.askInt("Escolha uma opção válida: ");
         }
 
@@ -81,7 +81,6 @@ public class JankenponService {
             System.out.println("Empate!");
             drawSolver();
         }
-
     }
 
     private void findWinner() {
@@ -91,38 +90,38 @@ public class JankenponService {
             drawSolver();
         }
 
-        if (player1.hand == pedra && player2.hand == papel) {
+        if (player1.hand == PEDRA && player2.hand == PAPEL) {
             winner = player2.name;
             loser = player1.name;
             winnerHand = player2.hand;
 
         }
 
-        if (player1.hand == papel && player2.hand == pedra) {
+        if (player1.hand == PAPEL && player2.hand == PEDRA) {
             winner = player1.name;
             loser = player2.name;
             winnerHand = player1.hand;
         }
 
-        if (player1.hand == pedra && player2.hand == tesoura) {
+        if (player1.hand == PEDRA && player2.hand == TESOURA) {
             winner = player1.name;
             loser = player2.name;
             winnerHand = player1.hand;
         }
 
-        if (player1.hand == tesoura && player2.hand == pedra) {
+        if (player1.hand == TESOURA && player2.hand == PEDRA) {
             winner = player2.name;
             loser = player1.name;
             winnerHand = player2.hand;
         }
 
-        if (player1.hand == papel && player2.hand == tesoura) {
+        if (player1.hand == PAPEL && player2.hand == TESOURA) {
             winner = player2.name;
             loser = player1.name;
             winnerHand = player2.hand;
         }
 
-        if (player1.hand == tesoura && player2.hand == papel) {
+        if (player1.hand == TESOURA && player2.hand == PAPEL) {
             winner = player1.name;
             loser = player2.name;
             winnerHand = player1.hand;
