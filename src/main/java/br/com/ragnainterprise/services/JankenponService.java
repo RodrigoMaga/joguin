@@ -2,6 +2,7 @@ package br.com.ragnainterprise.services;
 
 import br.com.ragnainterprise.Main;
 import br.com.ragnainterprise.domain.Player;
+import br.com.ragnainterprise.helpers.InputUserTerminal;
 
 import java.util.Scanner;
 
@@ -38,37 +39,46 @@ public class JankenponService {
     private Player askPlayerInput() {
         Player player = new Player();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Informe seu nome: ");
-        player.name = scanner.next();
-
+        player.name = InputUserTerminal.askString("Informe seu nome: ");
         System.out.printf("Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
-        System.out.print("Informe sua escolha: ");
-        player.hand = scanner.nextInt();
+        player.hand = InputUserTerminal.askInt("Informe sua escolha: ");
 
-        while (player.hand < 1 || player.hand > 3){
-            System.out.print("Escolha uma opção válida: ");
-            player.hand = scanner.nextInt();
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Informe seu nome: ");
+//        player.name = scanner.next();
+//
+//        System.out.printf("Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
+//        System.out.print("Informe sua escolha: ");
+//        player.hand = scanner.nextInt();
+
+
+        while (player.hand != pedra && player.hand != papel && player.hand != tesoura){
+            player.hand = InputUserTerminal.askInt("Escolha uma opção válida: ");
             //gethand();
             //quando tava chamando o método ele ficava reatribuindo o player aí o nome ficava null
         }
 
         return player;
     }
+
     private void drawSolver() {
-        Scanner scanner = new Scanner(System.in);
 
         System.out.printf(player1.name + " Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
-        System.out.print("Informe sua escolha: ");
+        player1.hand = InputUserTerminal.askInt("Informe sua escolha: ");
 
-        player1.hand = scanner.nextInt();
+        while (player1.hand != pedra && player1.hand != papel && player1.hand != tesoura) {
+            player1.hand = InputUserTerminal.askInt("Escolha uma opção válida: ");
+        }
 
         System.out.printf(player2.name + " Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
-        System.out.print("Informe sua escolha: ");
+        player2.hand = InputUserTerminal.askInt("Informe sua escolha: ");
 
-        player2.hand = scanner.nextInt();
+        while (player2.hand != pedra && player2.hand != papel && player2.hand != tesoura) {
+            player2.hand = InputUserTerminal.askInt("Escolha uma opção válida: ");
+        }
 
         while (player1.hand == player2.hand) {
+            System.out.println("Empate!");
             drawSolver();
         }
 
@@ -120,6 +130,7 @@ public class JankenponService {
     }
     private boolean willContinue(){
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Deseja jogar novamente?");
         System.out.printf("1 - Sim %n2 - Não%n");
         int choice = scanner.nextInt();
