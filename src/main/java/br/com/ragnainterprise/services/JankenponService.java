@@ -43,19 +43,8 @@ public class JankenponService {
         System.out.printf("Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
         player.hand = InputUserTerminal.askInt("Informe sua escolha: ");
 
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.print("Informe seu nome: ");
-//        player.name = scanner.next();
-//
-//        System.out.printf("Opções disponíveis: %n 1 - Pedra %n 2 - Papel %n 3 - Tesoura%n");
-//        System.out.print("Informe sua escolha: ");
-//        player.hand = scanner.nextInt();
-
-
         while (player.hand != PEDRA && player.hand != PAPEL && player.hand != TESOURA){
             player.hand = InputUserTerminal.askInt("Escolha uma opção válida: ");
-            //gethand();
-            //quando tava chamando o método ele ficava reatribuindo o player aí o nome ficava null
         }
 
         return player;
