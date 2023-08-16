@@ -10,8 +10,7 @@ public class JankenponService {
 
     Player player1 = askPlayerInput();
     Player player2 = askPlayerInput();
-    String winner;
-    String loser;
+    String winner, loser;
     int winnerHand;
     private static final int PEDRA = 1;
     private static final int PAPEL = 2;
