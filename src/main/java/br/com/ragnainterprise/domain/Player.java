@@ -5,4 +5,6 @@ public class Player {
     public String name;
 
     public int hand;
+
+    public int winningCount;
 }
