@@ -6,7 +6,11 @@ public class InputUserTerminal {
     public static String askString(String input) {
         Scanner scanner = new Scanner(System.in);
         System.out.printf(input);
-        return scanner.next();
+        String userInput = scanner.nextLine();
+        if (!userInput.isBlank()) {
+            return userInput;
+        }
+        return askString(input);
     }
 
     public static int askInt(String input) {

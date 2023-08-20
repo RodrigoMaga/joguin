@@ -82,6 +82,7 @@ public class JankenponService {
             winner = player2.name;
             loser = player1.name;
             winnerHand = player2.hand;
+            player2.winningCount++;
 
         }
 
@@ -89,31 +90,44 @@ public class JankenponService {
             winner = player1.name;
             loser = player2.name;
             winnerHand = player1.hand;
+            player1.winningCount++;
         }
 
         if (player1.hand == PEDRA && player2.hand == TESOURA) {
             winner = player1.name;
             loser = player2.name;
             winnerHand = player1.hand;
+            player1.winningCount++;
         }
 
         if (player1.hand == TESOURA && player2.hand == PEDRA) {
             winner = player2.name;
             loser = player1.name;
             winnerHand = player2.hand;
+            player2.winningCount++;
         }
 
         if (player1.hand == PAPEL && player2.hand == TESOURA) {
             winner = player2.name;
             loser = player1.name;
             winnerHand = player2.hand;
+            player2.winningCount++;
         }
 
         if (player1.hand == TESOURA && player2.hand == PAPEL) {
             winner = player1.name;
             loser = player2.name;
             winnerHand = player1.hand;
+            player1.winningCount++;
         }
+    }
+
+    private void winnerCount(){
+
+
+        System.out.println("Jogador: " + player1.name + " ganhou " + player1.winningCount + " vezes!");
+        System.out.println("Jogador: " + player2.name + " ganhou " + player2.winningCount + " vezes!");
+
     }
     private boolean willContinue(){
         Scanner scanner = new Scanner(System.in);
@@ -123,9 +137,13 @@ public class JankenponService {
         int choice = scanner.nextInt();
 
         if (choice == 1){
-        player1 = askPlayerInput();
-        player2 = askPlayerInput();
+//        player1 = askPlayerInput();
+//        player2 = askPlayerInput();
+            drawSolver();
         } else {
+            System.out.println("Obrigado por jogar!");
+            winnerCount();
+
             return false;
         }
         return true;
