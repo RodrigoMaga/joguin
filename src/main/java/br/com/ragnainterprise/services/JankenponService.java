@@ -45,7 +45,6 @@ public class JankenponService {
         while (player.hand != PEDRA && player.hand != PAPEL && player.hand != TESOURA){
             player.hand = InputUserTerminal.askInt("Escolha uma opção válida: ");
         }
-
         return player;
     }
 
@@ -79,47 +78,37 @@ public class JankenponService {
         }
 
         if (player1.hand == PEDRA && player2.hand == PAPEL) {
-            winner = player2.name;
-            loser = player1.name;
-            winnerHand = player2.hand;
-            player2.winningCount++;
+            handleResult(player2, player1);
 
         }
 
         if (player1.hand == PAPEL && player2.hand == PEDRA) {
-            winner = player1.name;
-            loser = player2.name;
-            winnerHand = player1.hand;
-            player1.winningCount++;
+            handleResult(player1, player2);
         }
 
         if (player1.hand == PEDRA && player2.hand == TESOURA) {
-            winner = player1.name;
-            loser = player2.name;
-            winnerHand = player1.hand;
-            player1.winningCount++;
+            handleResult(player1, player2);
         }
 
         if (player1.hand == TESOURA && player2.hand == PEDRA) {
-            winner = player2.name;
-            loser = player1.name;
-            winnerHand = player2.hand;
-            player2.winningCount++;
+            handleResult(player2, player1);
         }
 
         if (player1.hand == PAPEL && player2.hand == TESOURA) {
-            winner = player2.name;
-            loser = player1.name;
-            winnerHand = player2.hand;
-            player2.winningCount++;
+            handleResult(player2, player1);
         }
 
         if (player1.hand == TESOURA && player2.hand == PAPEL) {
-            winner = player1.name;
-            loser = player2.name;
-            winnerHand = player1.hand;
-            player1.winningCount++;
+            handleResult(player1, player2);
         }
+
+    }
+
+    private void handleResult(Player playerWinner, Player playerLoser) {
+        winner = playerWinner.name;
+        loser = playerLoser.name;
+        winnerHand = playerWinner.hand;
+        playerWinner.winningCount++;
     }
 
     private void winnerCount(){
@@ -129,6 +118,7 @@ public class JankenponService {
         System.out.println("Jogador: " + player2.name + " ganhou " + player2.winningCount + " vezes!");
 
     }
+
     private boolean willContinue(){
         Scanner scanner = new Scanner(System.in);
 
@@ -137,8 +127,6 @@ public class JankenponService {
         int choice = scanner.nextInt();
 
         if (choice == 1){
-//        player1 = askPlayerInput();
-//        player2 = askPlayerInput();
             drawSolver();
         } else {
             System.out.println("Obrigado por jogar!");
