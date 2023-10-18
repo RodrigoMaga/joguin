@@ -1,8 +1,7 @@
 package br.com.ragnainterprise.services;
 
-import br.com.ragnainterprise.Main;
 import br.com.ragnainterprise.domain.Player;
-import br.com.ragnainterprise.helpers.InputUserTerminal;
+import br.com.ragnainterprise.helper.InputUserTerminal;
 
 import java.util.Scanner;
 

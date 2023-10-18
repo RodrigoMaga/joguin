@@ -1,4 +1,4 @@
-package br.com.ragnainterprise.helpers;
+package br.com.ragnainterprise.helper;
 
 import java.util.Scanner;
 
