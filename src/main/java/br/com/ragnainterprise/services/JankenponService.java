@@ -1,17 +1,11 @@
 package br.com.ragnainterprise.services;
 
-import br.com.ragnainterprise.config.DBConfig;
 import br.com.ragnainterprise.domain.Player;
 import br.com.ragnainterprise.helper.InputUserTerminal;
-import br.com.ragnainterprise.repository.PlayerRepository;
 
-
-import java.sql.Connection;
 import java.util.Scanner;
 
 public class JankenponService {
-    DBConfig dbConfig = new DBConfig();
-    Connection connection = dbConfig.connect();
     Player player1 = askPlayerInput();
     Player player2 = askPlayerInput();
     String winner, loser;

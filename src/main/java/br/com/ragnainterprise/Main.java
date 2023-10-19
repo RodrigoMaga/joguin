@@ -12,15 +12,11 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        DBConfig dbConfig = new DBConfig();
+        PlayerRepository.insertPlayer();
 
-        Connection connection = dbConfig.connect();
-
-        List<Player> players = PlayerRepository.getAll(connection);
+        List<Player> players = PlayerRepository.getAll();
 
         System.out.println(players);
-
-        PlayerRepository.insertPlayer();
 
 //        GameSelection gameSelection = new GameSelection();
 //        gameSelection.selectGame();

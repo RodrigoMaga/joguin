@@ -12,8 +12,10 @@ import java.util.List;
 
 public class PlayerRepository {
 
-    public static List<Player> getAll(Connection connection) {
+    public static List<Player> getAll() {
         List<Player> playerList = new ArrayList<>();
+
+        Connection connection = DBConfig.getConnection();
 
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM users ORDER BY id ASC");
@@ -35,8 +37,7 @@ public class PlayerRepository {
     }
 
     public static void savePlayer(Player player) {
-        DBConfig dbConfig = new DBConfig();
-        Connection connection = dbConfig.connect();
+        Connection connection = DBConfig.getConnection();
 
         String SQL = "INSERT INTO users (id, username, hand, wincount) VALUES (?, ?, ?, ?)";
 
@@ -65,10 +66,10 @@ public class PlayerRepository {
     public static void insertPlayer(){
 
         Player player = new Player();
-        player.setId(11);
-        player.setName("Dilma");
+        player.setId(16);
+        player.setName("Teste");
         player.setHand(3);
-        player.setWinningCount(10);
+        player.setWinningCount(12);
 
         savePlayer(player);
     }
