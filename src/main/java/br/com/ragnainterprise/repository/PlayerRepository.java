@@ -39,15 +39,14 @@ public class PlayerRepository {
     public static void savePlayer(Player player) {
         Connection connection = DBConfig.getConnection();
 
-        String SQL = "INSERT INTO users (id, username, hand, wincount) VALUES (?, ?, ?, ?)";
+        String SQL = "INSERT INTO users (username, hand, wincount) VALUES (?, ?, ?)";
 
         try {
 
             PreparedStatement ps = connection.prepareStatement(SQL);
-            ps.setInt(1, player.getId());
-            ps.setString(2, player.getName());
-            ps.setInt (3, player.getHand());
-            ps.setInt (4, player.getWinningCount());
+            ps.setString(1, player.getName());
+            ps.setInt (2, player.getHand());
+            ps.setInt (3, player.getWinningCount());
 
             ps.executeUpdate();
         } catch (Exception e) {
@@ -66,10 +65,9 @@ public class PlayerRepository {
     public static void insertPlayer(){
 
         Player player = new Player();
-        player.setId(16);
-        player.setName("Teste");
+        player.setName("Rodrigo");
         player.setHand(3);
-        player.setWinningCount(12);
+        player.setWinningCount(0);
 
         savePlayer(player);
     }
