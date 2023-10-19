@@ -2,13 +2,45 @@ package br.com.ragnainterprise.domain;
 
 public class Player {
 
-    public int id;
+    private int id;
 
-    public String name;
+    private String name;
 
-    public int hand;
+    private int hand;
 
-    public int winningCount;
+    private int winningCount;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHand() {
+        return hand;
+    }
+
+    public int getWinningCount() {
+        return winningCount;
+    }
+
+    public void setId(final int id) {
+        this.id = id;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    public void setHand(final int hand) {
+        this.hand = hand;
+    }
+
+    public void setWinningCount(int winningCount) {
+        this.winningCount = winningCount;
+    }
 
     @Override
     public String toString() {
